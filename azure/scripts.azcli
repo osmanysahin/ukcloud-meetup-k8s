@@ -1,0 +1,20 @@
+#for creating kuernetes dashboard
+kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+
+
+# get credentials for the kube dashboard
+az aks get-credentials --resource-group aks-rg-eun --name k8s-aks-eun
+
+#enable kubedashboard 
+az aks enable-addons --addons kube-dashboard --resource-group tru-d-servicek8s-rg-eun --name k8s-aks-eun
+
+#browse the dashboard
+az aks browse --resource-group aks-rg-eun --name aks
+
+#deploy the yaml file
+kubectl apply -f hello-kubernetes.yaml
+
+# get services 
+kubectl get services
+
+
